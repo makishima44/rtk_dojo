@@ -1,6 +1,6 @@
 "use client";
 
-import { useGetAllPostsQuery } from "@/store/post-slice";
+import { useGetAllPostsQuery } from "@/entities/post/api/postApi";
 
 export const PostList = () => {
   const { data: posts } = useGetAllPostsQuery(undefined);
