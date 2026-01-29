@@ -6,7 +6,10 @@ export const postApi = baseApi.injectEndpoints({
     getAllPosts: build.query<Post[], undefined>({
       query: () => "/posts",
     }),
+    getPostById: build.query<Post, number>({
+      query: (id) => `/posts/${id}`,
+    }),
   }),
 });
 
-export const { useGetAllPostsQuery } = postApi;
+export const { useGetAllPostsQuery, useGetPostByIdQuery } = postApi;
