@@ -1,9 +1,9 @@
 import { PostList } from "@/entities/post/ui/postLIst/PostList";
-import styles from "../page.module.css";
 
 export default function Posts() {
   return (
-    <div className={styles.page}>
+    <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
+      <h1>Posts List</h1>
       <PostList />
     </div>
   );
