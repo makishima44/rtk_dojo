@@ -2,15 +2,19 @@ import s from "./PostDetails.module.css";
 
 import { useGetPostByIdQuery } from "../../api/postApi";
 
-export const PostDetailed = () => {
-  const { data: post, isLoading } = useGetPostByIdQuery(12);
+type Props = {
+  postId: number;
+};
 
-  if (post === undefined) {
-    return <>No Post</>;
-  }
+export const PostDetailed = ({ postId }: Props) => {
+  const { data: post, isLoading } = useGetPostByIdQuery(postId);
 
   if (isLoading) {
     return <>...Loading</>;
+  }
+
+  if (!post) {
+    return <>No Post</>;
   }
 
   return (
