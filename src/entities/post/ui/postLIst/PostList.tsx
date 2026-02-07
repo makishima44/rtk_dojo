@@ -3,9 +3,13 @@
 import { useGetAllPostsQuery } from "@/entities/post/api/postApi";
 
 export const PostList = () => {
-  const { data: posts } = useGetAllPostsQuery(undefined);
+  const { data: posts, isLoading } = useGetAllPostsQuery(undefined);
 
-  if (!posts) {
+  if (isLoading) {
+    return <>...Loading</>;
+  }
+
+  if (!posts || posts.length === 0) {
     return <>No posts</>;
   }
 
