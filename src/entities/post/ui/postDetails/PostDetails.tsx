@@ -3,11 +3,13 @@ import s from "./PostDetails.module.css";
 import { useGetPostByIdQuery } from "../../api/postApi";
 
 type Props = {
-  postId: number;
+  postId: number | null;
 };
 
 export const PostDetailed = ({ postId }: Props) => {
-  const { data: post, isLoading } = useGetPostByIdQuery(postId);
+  const { data: post, isLoading } = useGetPostByIdQuery(postId!, {
+    skip: postId === null,
+  });
 
   if (isLoading) {
     return <>...Loading</>;
