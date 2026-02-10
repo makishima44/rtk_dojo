@@ -1,9 +1,12 @@
 "use client";
 
 import { useGetAllPostsQuery } from "@/entities/post/api/postApi";
+import { setSelectedPostId } from "@/features/posts/model/postsSlice";
+import { useDispatch } from "react-redux";
 
 export const PostList = () => {
   const { data: posts, isLoading } = useGetAllPostsQuery(undefined);
+  const dispatch = useDispatch();
 
   if (isLoading) {
     return <>...Loading</>;
@@ -17,7 +20,11 @@ export const PostList = () => {
     <>
       <ul>
         {posts.map((post) => {
-          return <li key={post.id}>{post.title}</li>;
+          return (
+            <li onClick={() => dispatch(setSelectedPostId(post.id))} key={post.id}>
+              {post.title}
+            </li>
+          );
         })}
       </ul>
     </>
