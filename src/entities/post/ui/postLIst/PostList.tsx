@@ -1,4 +1,5 @@
 "use client";
+import s from "./PostList.module.css";
 
 import { useGetAllPostsQuery } from "@/entities/post/api/postApi";
 import { setSelectedPostId } from "@/features/posts/model/postsSlice";
@@ -18,15 +19,15 @@ export const PostList = () => {
 
   return (
     <>
-      <ul>
+      <ol>
         {posts.map((post) => {
           return (
-            <li onClick={() => dispatch(setSelectedPostId(post.id))} key={post.id}>
+            <li onClick={() => dispatch(setSelectedPostId(post.id))} key={post.id} className={s.post}>
               {post.title}
             </li>
           );
         })}
-      </ul>
+      </ol>
     </>
   );
 };
