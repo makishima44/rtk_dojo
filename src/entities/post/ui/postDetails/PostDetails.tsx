@@ -21,11 +21,17 @@ export const PostDetailed = ({ postId }: Props) => {
 
   return (
     <div className={s.root}>
-      <h3>title: {post.title}</h3>
-      <p>description: {post.body}</p>
+      <h2>{post.title}</h2>
+      <p>
+        <b>description:</b> {post.body}
+      </p>
       <div>
-        <span>userId: {post.userId}</span>
-        <span>postId: {post.id}</span>
+        <span>
+          <b>userId:</b> {post.userId}
+        </span>
+        <span>
+          <b>postId:</b> {post.id}
+        </span>
       </div>
     </div>
   );
