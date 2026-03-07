@@ -1,4 +1,4 @@
-import { PostsExplorer } from "@/widjets/postsExplorer/PostsExplorer";
+import { PostsExplorer } from "@/widgets/postsExplorer/PostsExplorer";
 
 export default function Posts() {
   return (
