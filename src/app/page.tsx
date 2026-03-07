@@ -1,3 +1,9 @@
+import Link from "next/link";
+
 export default function Home() {
-  return <div>1</div>;
+  return (
+    <div>
+      <Link href={"/posts"}>posts</Link>
+    </div>
+  );
 }
