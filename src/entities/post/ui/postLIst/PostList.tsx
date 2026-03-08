@@ -3,10 +3,12 @@ import s from "./PostList.module.css";
 
 import { useGetAllPostsQuery } from "@/entities/post/api/postApi";
 import { setSelectedPostId } from "@/features/posts/model/postsSlice";
-import { useDispatch } from "react-redux";
+import { RootState } from "@/store/store";
+import { useDispatch, useSelector } from "react-redux";
 
 export const PostList = () => {
   const { data: posts, isLoading } = useGetAllPostsQuery(undefined);
+  const selectedId = useSelector((state: RootState) => state.users.selectedUserId);
   const dispatch = useDispatch();
 
   if (isLoading) {
@@ -17,10 +19,12 @@ export const PostList = () => {
     return <>No posts</>;
   }
 
+  const filteredPost = selectedId === null ? posts : posts.filter((post) => post.userId === selectedId);
+
   return (
     <>
       <ol>
-        {posts.map((post) => {
+        {filteredPost.map((post) => {
           return (
             <li onClick={() => dispatch(setSelectedPostId(post.id))} key={post.id} className={s.post}>
               {post.title}
