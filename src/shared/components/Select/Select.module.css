@@ -1,0 +1,21 @@
+.root {
+  position: relative;
+}
+
+.dropdown {
+  position: absolute;
+  z-index: 999;
+}
+
+.title {
+  background-color: transparent;
+  min-width: 150px;
+}
+
+.option {
+  background-color: black;
+  min-width: 150px;
+}
+.option:hover {
+  background-color: red;
+}
