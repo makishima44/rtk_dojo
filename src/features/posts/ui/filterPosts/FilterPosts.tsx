@@ -6,6 +6,8 @@ import { RootState } from "@/store/store";
 import { useDispatch, useSelector } from "react-redux";
 
 export const FilterPosts = () => {
+  const USER_IDS: (number | "")[] = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, ""];
+
   const dispatch = useDispatch();
 
   const selectedId = useSelector((state: RootState) => state.users.selectedUserId);
@@ -24,17 +26,11 @@ export const FilterPosts = () => {
     <div>
       <label htmlFor='id'>select id</label>
       <select id='userId' value={selectedId ?? ""} onChange={handleChange} className={s.select}>
-        <option value='1'>1</option>
-        <option value='2'>2</option>
-        <option value='3'>3</option>
-        <option value='4'>4</option>
-        <option value='5'>5</option>
-        <option value='6'>6</option>
-        <option value='7'>7</option>
-        <option value='8'>8</option>
-        <option value='9'>9</option>
-        <option value='10'>10</option>
-        <option value=''>All users</option>
+        {USER_IDS.map((id) => (
+          <option key={id} value={id} className={s.option}>
+            {id === "" ? "All users" : id}
+          </option>
+        ))}
       </select>
     </div>
   );

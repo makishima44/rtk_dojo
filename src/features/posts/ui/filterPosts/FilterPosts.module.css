@@ -1,3 +1,7 @@
 .select {
   background-color: #0a0a0a;
 }
+
+.option:hover {
+  background-color: red;
+}
